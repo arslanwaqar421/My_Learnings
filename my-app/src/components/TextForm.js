@@ -31,7 +31,7 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={convertToLower}>Convert to Lower</button>
   
             </form>
-            <div className="container my-2" >
+            <div className="container my-2" style={{color :props.mode === "light"?"black":"white"}}>
                 <h1 >Your text Summary</h1>
                 <p>{Text.split(" ").length} words and {Text.length} Characters</p>
             </div>
