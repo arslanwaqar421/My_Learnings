@@ -2,21 +2,24 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
 
-    const [Text,setText] = useState("Enter Text here")
+    const [Text,setText] = useState("")
 
-    const handleClick = ()=> {
+    const handleClick = (event)=> {
+        event.preventDefault()
         console.log("Upper Case clicked")
         let newText = Text.toUpperCase()
         setText(newText)
     }
 
     const handleOnChange = (event) => {
+        // event.preventDefault()
         console.log("On Change!")
         setText(event.target.value)
     }
 
-    const convertToLower = () =>{
+    const convertToLower = (event) =>{
         setText(Text.toLowerCase())
+        event.preventDefault()
     }
 
 
