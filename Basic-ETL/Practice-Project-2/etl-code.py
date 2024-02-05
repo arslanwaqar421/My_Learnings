@@ -59,11 +59,39 @@ def load_to_csv(filename, df):
     print("   Data Successfully loaded to CSV")
     print('-------------------------------------')
 
+def load_to_db(df, sql_connection, table_name):
+    '''This functions loads the data to the databse sqlite3'''
+    df.to_sql(table_name, sql_connection, if_exists='replace', index=False)
+    print('-------------------------------------')
+    print("   Data Successfully loaded to DB")
+    print('-------------------------------------')
+
+def run_query(query_statement, sql_connection):
+    print(query_statement)
+    query_output = pd.read_sql(query_statement, sql_connection)
+    print(query_output)
+    print()
+
+def log_progress(message):
+
+    time  = datetime.now()
+    with open('etl_log_file.txt' , 'a') as f:
+        f.write(f'{time} : {message}. \n')
+    
+   
 
 
 
+log_progress("Data Extraction has started!")
 df = extract_data(URL)
-print(df)
+log_progress("Data Extraction has finished!")
+log_progress("Data Transformation has started!")
 df = transform(df)
-print(df)
+log_progress("Data Transformation has finished!")
+log_progress("Data loading has started")
 load_to_csv(csv_file,df)
+connection = sql.connect('World_Economies.db')
+load_to_db(df,connection,table_name)
+log_progress("Data loading has finished!")
+run_query('Select * from countries_by_gdp',connection)
+

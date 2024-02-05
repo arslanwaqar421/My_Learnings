@@ -1,0 +1,6 @@
+2024-02-06 02:02:29.258876 : Data Extraction has started!. 
+2024-02-06 02:02:34.871981 : Data Extraction has finished!. 
+2024-02-06 02:02:34.872320 : Data Transformation has started!. 
+2024-02-06 02:02:34.874929 : Data Transformation has finished!. 
+2024-02-06 02:02:34.875053 : Data loading has started. 
+2024-02-06 02:02:34.885845 : Data loading has finished!. 
